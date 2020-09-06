@@ -12,7 +12,11 @@ const make_cols = (refstr, columns) => {
   let o = [],
     C = XLSX.utils.decode_range(refstr).e.c + 1;
   for (var i = 0; i < C; ++i) {
-    if (columnArray.find(column => column.toUpperCase() === XLSX.utils.encode_col(i))) {
+    if (columns) {
+      if (columnArray.find(column => column.toUpperCase() === XLSX.utils.encode_col(i))) {
+        o[i] = { name: XLSX.utils.encode_col(i), key: i };
+      }
+    } else {
       o[i] = { name: XLSX.utils.encode_col(i), key: i };
     }
   };
@@ -52,7 +56,7 @@ class SheetJSApp extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({ value: event.target.value });
   }
 
   // exportFile() {
