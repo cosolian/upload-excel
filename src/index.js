@@ -7,7 +7,7 @@ import "./styles.css";
 function App() {
   return (
     <div className="App">
-      ledprocenter.com
+      <img src="http://ledprocenter.com/wp-content/uploads/2015/02/Logo-Main-Site-Ledprocenter.png" />
       <SheetJSApp />
     </div>
   );

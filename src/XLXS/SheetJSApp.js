@@ -47,9 +47,19 @@ class SheetJSApp extends React.Component {
       const wsname = wb.SheetNames[0];
       const ws = wb.Sheets[wsname];
       /* Convert array of arrays */
-      const data = XLSX.utils.sheet_to_json(ws, { header: 1 });
+      //const data = XLSX.utils.sheet_to_json(ws, { header: 1 });
+      const columns = this.state.value.split(",");
+
+      let cols = [];
+      let rows = [];
+      for (var i = 0; i < columns.length; i++) {
+        cols[i] = { name: ws[columns[i].toUpperCase()].v, key: i }
+        rows[i] = { name: ws[columns[i].toUpperCase()].v, key: i }
+      }
+      this.setState({ data: rows, cols: cols });
+
       /* Update state */
-      this.setState({ data: data, cols: make_cols(ws["!ref"], this.state.value) });
+      //this.setState({ data: data, cols: make_cols(ws["!ref"], this.state.value) });
     };
     if (rABS) reader.readAsBinaryString(file);
     else reader.readAsArrayBuffer(file);
@@ -76,8 +86,8 @@ class SheetJSApp extends React.Component {
               <tr>
                 <td>
                   <label>
-                    Columns:
-                    <input type="text" value={this.state.value} onChange={this.handleChange} />
+                    ใส่คอลัมน์และแถวที่ต้องการเช่น a1 หรือ a1,b2&nbsp;:&nbsp;&nbsp;&nbsp;
+                    <input type="text" width="550px" value={this.state.value} onChange={this.handleChange} />
                   </label>
                 </td>
                 <td>

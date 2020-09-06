@@ -26,6 +26,7 @@ class DragDropFile extends React.Component {
         onDrop={this.onDrop}
         onDragEnter={this.suppress}
         onDragOver={this.suppress}
+        onClick={e => (e.target.value = null)}
       >
         {this.props.children}
       </div>
