@@ -1,12 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import SheetJSApp from "./XLXS/SheetJSApp";
 
-import App from "./App";
+import "./styles.css";
+
+function App() {
+  return (
+    <div className="App">
+      <SheetJSApp />
+    </div>
+  );
+}
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  rootElement
-);
+ReactDOM.render(<App />, rootElement);
