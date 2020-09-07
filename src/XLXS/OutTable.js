@@ -12,17 +12,17 @@ class OutTable extends React.Component {
       <div className="table-responsive">
         <table className="table table-striped">
           <thead>
-            <tr>
+            <tr width="64px" height="64px">
               {this.props.cols.map(c => (
-                <th key={c.key}>{c.name}</th>
+                <th width="64px" height="64px" key={c.key}>{c.name}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {this.props.data.map((r, i) => (
-              <tr key={i}>
+              <tr width="64px" height="64px" key={i}>
                 {this.props.cols.map(c => (
-                  <td key={c.key}>{r[c.key]}</td>
+                  <td width="64px" height="64px" key={c.key}>{r[c.key]}</td>
                 ))}
               </tr>
             ))}
